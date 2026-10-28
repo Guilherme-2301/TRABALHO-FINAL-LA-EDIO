@@ -1,0 +1,49 @@
+services:
+  # 1. BANCO DE DADOS (PostgreSQL Populado)
+  postgres:
+    image: postgres:15-alpine
+    container_name: garage_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: senai
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      # Este volume executa o init.sql automaticamente no primeiro boot:
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  # 2. BACKEND (Node.js Express)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: garage_backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DATABASE_URL=postgres://postgres:senai@postgres:5432/postgres
+      - JWT_SECRET=sua_chave_secreta_aqui_123
+    volumes:
+      - ./backend/auth_info_baileys:/usr/src/app/auth_info_baileys
+    depends_on:
+      - postgres
+
+  # 3. FRONTEND (Nginx Web Server)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: garage_frontend
+    restart: always
+    ports:
+      - "8082:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

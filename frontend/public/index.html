@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage Slots - Miniaturas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- TELA DE AUTENTICAÇÃO -->
+        <div id="auth-screen" class="card">
+            <h1 class="logo">GARAGE SLOTS</h1>
+            <p class="subtitle">Sua Plataforma Premium de Miniaturas</p>
+
+            <!-- FORMULÁRIO DE LOGIN -->
+            <form id="login-form">
+                <h2>Login</h2>
+                <input type="tel" id="login-phone" placeholder="DDD + Telefone" required>
+                <input type="password" id="login-password" placeholder="Sua Senha" required>
+                <button type="submit" class="btn btn-gold">Entrar</button>
+                <p class="switch-auth">Não tem conta? <a href="#" id="show-register">Cadastre-se</a></p>
+            </form>
+
+            <!-- FORMULÁRIO DE CADASTRO -->
+            <form id="register-form" class="hidden">
+                <h2>Criar Conta</h2>
+                <input type="text" id="reg-name" placeholder="Seu Nome Completo" required>
+                <input type="tel" id="reg-phone" placeholder="DDD + WhatsApp" required>
+                <input type="password" id="reg-password" placeholder="Escolha uma Senha" required>
+                <button type="submit" class="btn btn-gold">Enviar Código WhatsApp</button>
+                <p class="switch-auth">Já tem conta? <a href="#" id="show-login">Fazer Login</a></p>
+            </form>
+
+            <!-- FORMULÁRIO DE VERIFICAÇÃO OTP -->
+            <form id="otp-form" class="hidden">
+                <h2>Verificar WhatsApp</h2>
+                <p>Insira o código enviado para seu WhatsApp:</p>
+                <input type="text" id="otp-code" placeholder="Código de 6 dígitos" required maxlength="6">
+                <button type="submit" class="btn btn-gold">Confirmar Cadastro</button>
+            </form>
+        </div>
+
+        <!-- TELA DO JOGO (SLOT MACHINE) -->
+        <div id="game-screen" class="hidden">
+            <header>
+                <div class="user-info">
+                    <span id="user-name-display">👤 Jogador</span>
+                    <span id="user-phone-display">📱 ---</span>
+                </div>
+                <div class="spins-box">
+                    <span>GIROS: <strong id="spins-counter">0</strong></span>
+                    <button id="buy-spins-btn" class="btn btn-gold-sm">+ Comprar</button>
+                </div>
+                <button id="logout-btn" class="btn btn-danger-sm">Sair</button>
+            </header>
+
+            <main class="slot-container">
+                <div class="slot-machine">
+                    <!-- Canvas ajustado para formato vertical (300px largura x 450px altura) -->
+                    <canvas id="slot-canvas" width="300" height="450"></canvas>
+                </div>
+
+                <div class="actions">
+                    <button id="spin-btn" class="btn btn-spin">GIRAR 🎰</button>
+                </div>
+
+                <div id="win-message" class="win-message"></div>
+            </main>
+
+            <!-- SEÇÃO DE PRÊMIOS COM BOTÃO TOGGLE -->
+            <section class="prizes-section">
+                <button id="toggle-prizes-btn" class="btn btn-gold">🏆 Meus Prêmios Ganhos ▼</button>
+                <ul id="prizes-list" class="hidden"></ul>
+            </section>
+        </div>
+    </div>
+
+    <!-- MODAL DE COMPRA DE GIROS -->
+    <div id="buy-modal" class="modal hidden">
+        <div class="modal-content card">
+            <span class="close-modal">&times;</span>
+            <h2>Comprar Giros</h2>
+            <div class="packages">
+                <div class="package-card" data-spins="10" data-price="10.00">
+                    <h3>10 Giros</h3>
+                    <p class="price">R$ 10,00</p>
+                    <button class="btn btn-gold select-pkg">Selecionar</button>
+                </div>
+                <div class="package-card" data-spins="30" data-price="25.00">
+                    <h3>30 Giros</h3>
+                    <p class="price">R$ 25,00</p>
+                    <button class="btn btn-gold select-pkg">Selecionar</button>
+                </div>
+                <div class="package-card" data-spins="70" data-price="50.00">
+                    <h3>70 Giros</h3>
+                    <p class="price">R$ 50,00</p>
+                    <button class="btn btn-gold select-pkg">Selecionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

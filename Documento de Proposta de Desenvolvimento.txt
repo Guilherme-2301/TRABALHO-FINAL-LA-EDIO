@@ -1,0 +1,49 @@
+1. Integrantes da Equipe
+Guilherme da silva neves - Desenvolvedor Backend & DevOps
+
+Joaquim  cacilhias ferreira - Desenvolvedor Frontend
+
+Andrey rickelmy  - Banco de Dados e Testes
+
+2. Nome da Empresa
+Floripa Mini Solutions
+
+3. Proposta de Desenvolvimento
+3.1 Descrição do Projeto
+O Família Floripa Mini é uma plataforma web de engajamento para colecionadores de miniaturas. Os membros do grupo de WhatsApp acumulam pontos ao comprar rifas e arrematar miniaturas em leilões. Pelo site, o cliente faz login com seu número, consulta seus pontos acumulados e os utiliza para girar uma roleta interativa valendo prêmios.
+
+3.2 Funcionalidades e Requisitos
+Requisitos Funcionais (RF)
+RF01 - Login e Cadastro: Entrada do cliente no site utilizando o número do telefone/WhatsApp cadastrado no grupo.
+
+RF02 - Landing Page (LP): Página inicial que explica como funciona o grupo, com botões para entrar no WhatsApp, participar das rifas/leilões e regras para ganhar giros.
+
+RF03 - Consulta de Saldo: Painel informando a quantidade de pontos que o cliente acumulou através das compras e leilões.
+
+RF04 - Roleta de Prêmios (Aplicação): O cliente gasta seus pontos acumulados (ex: 30 pts por giro) para rodar a roleta e concorrer a miniaturas, cupons e frete grátis.
+
+RF05 - Atualização de Saldo: Desconto automático dos pontos após cada giro e registro do prêmio sorteado no histórico.
+
+Requisitos Não Funcionais (RNF)
+RNF01 - Docker Compose: Toda a estrutura (Frontend, Backend e Banco de Dados) deve ser executada e orquestrada via docker-compose.yml.
+
+RNF02 - Desempenho: Resposta rápida na consulta de saldo e no sorteio da roleta.
+
+RNF03 - Responsividade: Layout otimizado principalmente para uso em celulares.
+
+RNF04 - Persistência de Dados: Manutenção dos saldos e prêmios em banco de dados sem perda de dados ao reiniciar os containers.
+
+3.3 Arquitetura do Sistema (Docker Compose)
+O projeto é mantido por três serviços em Docker:
+
+Frontend: Landing Page (chamada para WhatsApp/Rifas/Leilões), telas de Login/Cadastro e a interface da Roleta.
+
+Backend: API em Node.js/Express responsável por validar usuários, gerenciar os pontos do grupo e processar os giros da roleta.
+
+Banco de Dados: Armazenamento permanente de usuários, pontuações vindas das compras/leilões e histórico de resgates.
+
+4. Objetivo da Empresa
+O objetivo da Floripa Mini Solutions é aumentar a participação dos clientes nos leilões e na compra de rifas do grupo Família Floripa Mini. A roleta no site funciona como uma recompensa direta: quanto mais o membro participa das ações no WhatsApp, mais giros ele ganha no site.
+
+5. Visão de Mercado
+O mercado de miniaturas colecionáveis move fãs engajados em grupos fechados. Ao atrelar a compra de rifas e lances em leilões a giros de roleta em um site próprio, cria-se um ciclo de compra contínuo. Isso diferencia o grupo da concorrência, oferecendo um valor agregado real para quem compra e arremata peças no grupo.

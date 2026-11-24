@@ -1,0 +1,4 @@
+"backend/.env" | Out-File -FilePath .gitignore -Encoding utf8 -Append
+git add .
+git commit -m "feat: adiciona suporte a arquivo .env no backend e compose"
+git push origin principal
